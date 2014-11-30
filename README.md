@@ -1,4 +1,4 @@
-### Not ready for use yet
+#### At this point simply installs basic LAMP stack, not DurableDrupalDistro 
 
 Very simple vanilla Ansible playbook for setting up [Durable Drupal Distro](https://github.com/victorkane/durable-drupal-distro) on local workstation using Vagrant and VirtualBox
 
