@@ -15,6 +15,7 @@ https://vagrantcloud.com/ubuntu/boxes/trusty64/versions/14.04/providers/virtualb
 
 #### References
 
+* [Geerling, Jeff, *Ansible for DevOps*](https://leanpub.com/ansible-for-devops)
 * [Vagrant & Ansible Quickstart Tutorial](http://adamcod.es/2014/09/23/vagrant-ansible-quickstart-tutorial.html)
 * [*defunct* Configurar Servidores Es Sencillo Con Ansible](http://guate2014.drupal-centroamerica.org/session/configurar-servidores-es-sencillo-con-ansible)
   * [axai-mx/ansible-drupal-roles](https://github.com/axai-mx/ansible-drupal-roles)
