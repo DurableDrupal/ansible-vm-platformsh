@@ -1,5 +1,3 @@
-# IN PROGRESS: broken, DO NOT DOWNLOAD AT THIS TIME
-
 # Installs DurableDrupalDistro 
 
 Ansible playbook for setting up [Durable Drupal Distro](https://github.com/victorkane/durable-drupal-distro) on local workstation using Vagrant and VirtualBox based on the drupallean profile.
