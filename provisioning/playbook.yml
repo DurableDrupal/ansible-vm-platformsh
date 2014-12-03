@@ -4,6 +4,10 @@
   vars_files:
   - vars.yml
 
+  handlers:
+  - name: restart apache
+    service: name=apache2 state=restarted
+ 
   tasks:
   - name: Get software for apt repository management.
     apt: "pkg={{ item }} state=installed"
@@ -111,25 +115,32 @@
       dest: /usr/local/bin/drush
       state: link
 
-  - name: Check out Drupal Core to the Apache docroot.
+#  - name: Check out Drupal Core to the Apache docroot.
+#    git:
+#      repo: http://git.drupal.org/project/drupal.git
+#      version: "{{ drupal_core_version }}"
+#      dest: "{{ drupal_core_path }}"
+
+  - name: Check out DurableDrupalDistro to the Apache docroot.
     git:
-      repo: http://git.drupal.org/project/drupal.git
-      version: "{{ drupal_core_version }}"
+      repo: https://github.com/victorkane/durable-drupal-distro.git
+#      version: "{{ drupal_core_version }}"
       dest: "{{ drupal_core_path }}"
 
   - name: Install Drupal.
     command: >
-      drush si -y --site-name="{{ drupal_site_name }}" --account-name=admin
+      drush si drupallean -y --site-name="{{ drupal_site_name }}" --account-name=admin
       --account-pass=admin --db-url=mysql://root@localhost/{{ domain }}
       chdir={{ drupal_core_path }}
       creates={{ drupal_core_path }}/sites/default/settings.php
     notify: restart apache
 
-  # SEE: https://drupal.org/node/2121849#comment-8413637
-  - name: Set permissions properly on settings.php.
-    file:
-      path: "{{ drupal_core_path }}/sites/default/settings.php"
-      mode: 0744
+#  Only relevant to Drupal 8 in 2013
+#  # SEE: https://drupal.org/node/2121849#comment-8413637
+#  - name: Set permissions properly on settings.php.
+#    file:
+#      path: "{{ drupal_core_path }}/sites/default/settings.php"
+#      mode: 0744
 
   - name: Set permissions properly on files directory.
     file:
