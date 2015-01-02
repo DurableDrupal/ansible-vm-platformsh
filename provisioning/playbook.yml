@@ -162,12 +162,9 @@
       state: directory
       recurse: yes
       
-  - name: Set file permissions recursively on document root.
-    file:
-      path: "{{ drupal_core_path }}"
-      mode: 0644
-      state: file
-      recurse: yes
+  - command:  find . -type f -exec chmod 664 {} \;
+    args:
+      chdir: "{{ drupal_core_path }}"
       
   - name: Set http server user's recursive ownership of files directory
     file:
