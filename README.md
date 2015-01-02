@@ -6,7 +6,7 @@ Ansible playbook for setting up [Durable Drupal Website](https://github.com/Dura
 
 Use [Jeff Geerling's Ansible for DevOps Drupal Quick Start Guide](https://github.com/geerlingguy/ansible-for-devops/tree/master/drupal#quick-start-guide) upon which this playbook is based.
 
-* Install VirtualBox and Vagrant
+* Install VirtualBox and Vagrant (make sure Vagrant is version 1.6.5 on Mac)
 * Install Ansible
 * Clone this project to a folder where you keep your VMs
 * On the cammand-line in that folder, type `vagrant up`
