@@ -142,10 +142,36 @@
 #      path: "{{ drupal_core_path }}/sites/default/settings.php"
 #      mode: 0744
 
-  - name: Set permissions properly on files directory.
+#  - name: Set permissions properly on files directory.
+#    file:
+#      path: "{{ drupal_core_path }}/sites/default/files"
+#      mode: 0777
+#      state: directory
+#      recurse: yes
+ 
+  - name: Set vagrant user's recursive ownership of document root
     file:
-      path: "{{ drupal_core_path }}/sites/default/files"
-      mode: 0777
+      path: "{{ drupal_core_path }}"
+      owner: "vagrant"
+      recurse: yes
+      
+  - name: Set directory permissions recursively on document root.
+    file:
+      path: "{{ drupal_core_path }}"
+      mode: 0755
       state: directory
       recurse: yes
- 
+      
+  - name: Set file permissions recursively on document root.
+    file:
+      path: "{{ drupal_core_path }}"
+      mode: 0644
+      state: file
+      recurse: yes
+      
+  - name: Set http server user's recursive ownership of files directory
+    file:
+      path: "{{ drupal_core_path }}/sites/default/files"
+      owner: "www-data"
+      recurse: yes
+      
