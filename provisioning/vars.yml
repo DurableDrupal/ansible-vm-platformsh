@@ -5,13 +5,13 @@ drupal_core_version: "7.x"
 # drupal_core_version: "8.0.x"
 
 # Distro name
-distro_name: "durable-drupal-distro"
+distro_name: "durable-drupal-website"
 
 # The path where the Drupal distro will be downloaded and installed.
 drupal_core_path: "/var/www/{{ distro_name }}-dev"
 
 # The resulting domain will be [domain].dev (with .dev appended).
-domain: "durabledrupaldistro"
+domain: "durabledrupalwebsite"
 
 # Your Drupal site name.
-drupal_site_name: "DurableDrupalDistro dev"
+drupal_site_name: "DurableDrupalWebsite dev"

@@ -121,9 +121,9 @@
 #      version: "{{ drupal_core_version }}"
 #      dest: "{{ drupal_core_path }}"
 
-  - name: Check out DurableDrupalDistro to the Apache docroot.
+  - name: Check out DurableDrupal Website Distro to the Apache docroot.
     git:
-      repo: https://github.com/victorkane/durable-drupal-distro.git
+      repo: https://github.com/DurableDrupal/durable-drupal-website.git
 #      version: "{{ drupal_core_version }}"
       dest: "{{ drupal_core_path }}"
 
