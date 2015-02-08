@@ -1,20 +1,20 @@
-# Installs DurableDrupalDistro 
+# Installs DurableDrupalWebsite Distro 
 
-Ansible playbook for setting up [Durable Drupal Distro](https://github.com/victorkane/durable-drupal-distro) on local workstation using Vagrant and VirtualBox based on the drupallean profile.
+Ansible playbook for setting up [Durable Drupal Website](https://github.com/DurableDrupal/durable-drupal-website) on local workstation using Vagrant and VirtualBox based on the drupallean profile.
 
 ## Instructions
 
 Use [Jeff Geerling's Ansible for DevOps Drupal Quick Start Guide](https://github.com/geerlingguy/ansible-for-devops/tree/master/drupal#quick-start-guide) upon which this playbook is based.
 
-* Install VirtualBox and Vagrant
+* Install VirtualBox and Vagrant (make sure Vagrant is version 1.6.5 or later)
 * Install Ansible
 * Clone this project to a folder where you keep your VMs
 * On the cammand-line in that folder, type `vagrant up`
 * The process will take a while, on my 4GB RAM MacBook Pro it took about 5 minutes. A large part of that is the provisioning of the LAMP stack together with the checking out and installation of drush and DurableDrupalDistro.
-* Associate http://durabledrupaldistro.dev/ with the private local machine ip set up by the Vagrantfile (92.168.33.10).
-* Point your browser at http://durabledrupaldistro.dev/user and login with user admin and password admin
+* Associate http://durabledrupalwebsite.dev/ with the private local machine ip set up by the Vagrantfile (192.168.34.11).
+* Point your browser at http://durabledrupalwebsite.dev/user and login with user admin and password admin
 * Very little to look at more than a stark Adaptivetheme subtheme called drupallean
-* Check out http://durabledrupaldistro.dev/admin/modules
+* Check out http://durabledrupalwebsite.dev/admin/modules
 
 The vagrant init was originally done with:
 $ vagrant init ubuntu/trusty64

@@ -121,9 +121,9 @@
 #      version: "{{ drupal_core_version }}"
 #      dest: "{{ drupal_core_path }}"
 
-  - name: Check out DurableDrupalDistro to the Apache docroot.
+  - name: Check out DurableDrupal Website Distro to the Apache docroot.
     git:
-      repo: https://github.com/victorkane/durable-drupal-distro.git
+      repo: https://github.com/DurableDrupal/durable-drupal-website.git
 #      version: "{{ drupal_core_version }}"
       dest: "{{ drupal_core_path }}"
 
@@ -142,10 +142,33 @@
 #      path: "{{ drupal_core_path }}/sites/default/settings.php"
 #      mode: 0744
 
-  - name: Set permissions properly on files directory.
+#  - name: Set permissions properly on files directory.
+#    file:
+#      path: "{{ drupal_core_path }}/sites/default/files"
+#      mode: 0777
+#      state: directory
+#      recurse: yes
+ 
+  - name: Set vagrant user's recursive ownership of document root
     file:
-      path: "{{ drupal_core_path }}/sites/default/files"
-      mode: 0777
+      path: "{{ drupal_core_path }}"
+      owner: "vagrant"
+      recurse: yes
+      
+  - name: Set directory permissions recursively on document root.
+    file:
+      path: "{{ drupal_core_path }}"
+      mode: 0755
       state: directory
       recurse: yes
- 
+      
+  - command:  find . -type f -exec chmod 664 {} \;
+    args:
+      chdir: "{{ drupal_core_path }}"
+      
+  - name: Set http server user's recursive ownership of files directory
+    file:
+      path: "{{ drupal_core_path }}/sites/default/files"
+      owner: "www-data"
+      recurse: yes
+      
