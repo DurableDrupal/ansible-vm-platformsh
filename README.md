@@ -1,6 +1,6 @@
-# Installs DurableDrupalWebsite Distro 
+# Installs DurableDrupalDistro Distro 
 
-Ansible playbook for setting up [Durable Drupal Website](https://github.com/DurableDrupal/durable-drupal-website) on local workstation using Vagrant and VirtualBox based on the drupallean profile.
+Ansible playbook for setting up [Durable Drupal Distro](https://github.com/DurableDrupal/durable-drupal-distro) on local workstation using Vagrant and VirtualBox based on the drupallean profile.
 
 ## Instructions
 
