@@ -52,6 +52,22 @@
     apache2_module: name=rewrite state=present
     notify: restart apache
 
+  - name: Create directory for Virtual Host
+    file: path={{ drupal_core_path }} state=directory
+
+  - name: Set directory permissions recursively on document root.
+    file:
+      path: "{{ drupal_core_path }}"
+      mode: 0755
+      state: directory
+
+  - name: Set http server user's recursive ownership of files directory
+    file:
+      path: "{{ drupal_core_path }}"
+      owner: "vagrant"
+      group: "vagrant"
+      state: directory
+      
   - name: Add Apache virtualhost for Drupal development.
     template:
       src: "templates/drupal.dev.conf.j2"
@@ -101,6 +117,7 @@
   - name: Check out drush master branch.
     git:
       repo: https://github.com/drush-ops/drush.git
+      version: "6.x"
       dest: /opt/drush
 
   - name: Install Drush dependencies with Composer.
