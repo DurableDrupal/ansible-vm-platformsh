@@ -114,7 +114,7 @@
       mv composer.phar /usr/local/bin/composer
       creates=/usr/local/bin/composer
 
-  - name: Check out drush master branch.
+  - name: Check out drush version 6.x instead of 7.
     git:
       repo: https://github.com/drush-ops/drush.git
       version: "6.x"
