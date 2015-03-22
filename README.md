@@ -1,6 +1,6 @@
 # Installs DurableDrupalDistro Distro 
 
-Ansible playbook for setting up [Durable Drupal Distro](https://github.com/DurableDrupal/durable-drupal-distro) on local workstation using Vagrant and VirtualBox based on the drupallean profile; for use with a Platform.sh project. Installs [Platform.sh CLI](https://docs.platform.sh/overview/platform-cli/) and all dependencies.
+Ansible playbook for setting up a VM on your laptop or local workstation using Vagrant and VirtualBox for use with a Platform.sh project. Installs [Platform.sh CLI](https://docs.platform.sh/overview/platform-cli/) and all dependencies, and creates a database and virtual host to run your project locally.
 
 Once `vagrant up` is run (down below) provisioning has installed CLI, and you are all set to `get` your project from platform.sh, and you can build it locally with the following virutalhost and database:
 
