@@ -128,6 +128,9 @@
     sudo: yes
     sudo_user: vagrant
     
+## We don't actually install Drupal at drupal_core_path
+## We just want to use the virtual host and database for our Platform.sh Project
+## So we stop here
 
 #  - name: Check out Drupal Core to the Apache docroot.
 #    git:
@@ -135,26 +138,26 @@
 #      version: "{{ drupal_core_version }}"
 #      dest: "{{ drupal_core_path }}"
 
-  - name: Check out DurableDrupalDistro to the Apache docroot.
-    git:
-      repo: https://github.com/DurableDrupal/durable-drupal-distro.git
-#      version: "{{ drupal_core_version }}"
-      dest: "{{ drupal_core_path }}"
+#  - name: Check out DurableDrupalDistro to the Apache docroot.
+#    git:
+#      repo: https://github.com/DurableDrupal/durable-drupal-distro.git
+##      version: "{{ drupal_core_version }}"
+#      dest: "{{ drupal_core_path }}"
 
-  - name: Install Drupal.
-    command: >
-      drush si drupallean -y --site-name="{{ drupal_site_name }}" --account-name=admin
-      --account-pass=admin --db-url=mysql://root@localhost/{{ domain }}
-      chdir={{ drupal_core_path }}
-      creates={{ drupal_core_path }}/sites/default/settings.php
-    notify: restart apache
+#  - name: Install Drupal.
+#    command: >
+#      drush si drupallean -y --site-name="{{ drupal_site_name }}" --account-name=admin
+#      --account-pass=admin --db-url=mysql://root@localhost/{{ domain }}
+#      chdir={{ drupal_core_path }}
+#      creates={{ drupal_core_path }}/sites/default/settings.php
+#    notify: restart apache
 
-#  Only relevant to Drupal 8 in 2013
-#  # SEE: https://drupal.org/node/2121849#comment-8413637
-#  - name: Set permissions properly on settings.php.
-#    file:
-#      path: "{{ drupal_core_path }}/sites/default/settings.php"
-#      mode: 0744
+##  Only relevant to Drupal 8 in 2013
+##  # SEE: https://drupal.org/node/2121849#comment-8413637
+##  - name: Set permissions properly on settings.php.
+##    file:
+##      path: "{{ drupal_core_path }}/sites/default/settings.php"
+##      mode: 0744
 
 #  - name: Set permissions properly on files directory.
 #    file:
@@ -163,26 +166,26 @@
 #      state: directory
 #      recurse: yes
  
-  - name: Set vagrant user's recursive ownership of document root
-    file:
-      path: "{{ drupal_core_path }}"
-      owner: "vagrant"
-      recurse: yes
+#  - name: Set vagrant user's recursive ownership of document root
+#    file:
+#      path: "{{ drupal_core_path }}"
+#      owner: "vagrant"
+#      recurse: yes
       
-  - name: Set directory permissions recursively on document root.
-    file:
-      path: "{{ drupal_core_path }}"
-      mode: 0755
-      state: directory
-      recurse: yes
+#  - name: Set directory permissions recursively on document root.
+#    file:
+#      path: "{{ drupal_core_path }}"
+#      mode: 0755
+#      state: directory
+#      recurse: yes
       
-  - command:  find . -type f -exec chmod 664 {} \;
-    args:
-      chdir: "{{ drupal_core_path }}"
+#  - command:  find . -type f -exec chmod 664 {} \;
+#    args:
+#      chdir: "{{ drupal_core_path }}"
       
-  - name: Set http server user's recursive ownership of files directory
-    file:
-      path: "{{ drupal_core_path }}/sites/default/files"
-      owner: "www-data"
-      recurse: yes
+#  - name: Set http server user's recursive ownership of files directory
+#    file:
+#      path: "{{ drupal_core_path }}/sites/default/files"
+#      owner: "www-data"
+#      recurse: yes
       
