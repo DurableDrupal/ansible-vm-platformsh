@@ -114,6 +114,20 @@
       src: /opt/drush/drush
       dest: /usr/local/bin/drush
       state: link
+      
+  - name: Install Platform.sh CLI with Composer.
+    shell: >
+      /usr/local/bin/composer global require 'platformsh/cli:1.*' 
+    sudo: yes
+    sudo_user: vagrant
+
+  # we are in home dir now after composer CLI install
+  - name: update PATH in ~/.bash_profile for platform command
+    shell: >
+      echo 'export PATH="$PATH:~/.composer/vendor/bin"' >> ./.bash_profile
+    sudo: yes
+    sudo_user: vagrant
+    
 
 #  - name: Check out Drupal Core to the Apache docroot.
 #    git:
