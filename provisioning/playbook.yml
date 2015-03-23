@@ -131,6 +131,10 @@
       src: /opt/drush/drush
       dest: /usr/local/bin/drush
       state: link
+
+  - name: Execute Drush once as root to download last dependencies
+    shell: >
+      /opt/drush/drush
       
   - name: Install Platform.sh CLI with Composer.
     shell: >

@@ -1,8 +1,8 @@
 # Installs DurableDrupalDistro Distro 
 
-Ansible playbook for setting up a VM on your laptop or local workstation using Vagrant and VirtualBox for use with a Platform.sh project. Installs [Platform.sh CLI](https://docs.platform.sh/overview/platform-cli/) and all dependencies, and creates a database and virtual host to run your project locally.
+Ansible playbook for setting up a VM on your laptop or local workstation using Vagrant and VirtualBox for use with a Platform.sh project. Installs [Platform.sh CLI](https://docs.platform.sh/overview/platform-cli/) and all dependencies, and creates a database and editable virtual host to run your project locally.
 
-Once `vagrant up` is run (down below) provisioning has installed CLI, and you are all set to `get` your project from platform.sh, and you can build it locally with the following virutalhost and database:
+Once `vagrant up` is run (down below) provisioning has installed CLI, and you are all set to `platform` and `project:get` your project from platform.sh, and you can build it locally with the following virutalhost and database:
 
 ### virtualhost
 
@@ -41,9 +41,9 @@ $databases = array (
 
 These valaues are editable, see the playbook subdir
 
-You can associate the URL with the IP specified in the Vagrantfile.
+You can associate the URL with the IP specified in the Vagrantfile in your `/etc/hosts` file.
 
-## Instructions
+## General Instructions
 
 Use [Jeff Geerling's Ansible for DevOps Drupal Quick Start Guide](https://github.com/geerlingguy/ansible-for-devops/tree/master/drupal#quick-start-guide) upon which this playbook is based.
 
@@ -52,10 +52,8 @@ Use [Jeff Geerling's Ansible for DevOps Drupal Quick Start Guide](https://github
 * Clone this project to a folder where you keep your VMs
 * On the cammand-line in that folder, type `vagrant up`
 * The process will take a while, on my 4GB RAM MacBook Pro it took about 5 minutes. A large part of that is the provisioning of the LAMP stack together with the checking out and installation of drush and DurableDrupalDistro.
-* Associate http://durabledrupalwebsite.dev/ with the private local machine ip set up by the Vagrantfile (192.168.34.11).
-* Point your browser at http://durabledrupalwebsite.dev/user and login with user admin and password admin
-* Very little to look at more than a stark Adaptivetheme subtheme called drupallean
-* Check out http://durabledrupalwebsite.dev/admin/modules
+* Associate http://platformshvk.dev with the private local machine ip set up by the Vagrantfile (192.168.19.46).
+* Point your browser at http://platformshvk.dev after editing virtual host for the docroot of your project.
 
 The vagrant init was originally done with:
 $ vagrant init ubuntu/trusty64
